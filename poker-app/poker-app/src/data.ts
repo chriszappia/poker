@@ -4,5 +4,8 @@ export interface PersonVote {
 }
 
 export interface Game {
-    
+    gameName: string,
+    gameId: string,
+    cardsShowing: boolean,
+    players: object,
 }

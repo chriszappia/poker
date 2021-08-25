@@ -3,15 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 import firebase from "firebase/app";
 import "firebase/database";
-import { PersonVote } from './data';
+import { Game, PersonVote } from './data';
 
 
 function App() {
 
   const id = 1;
+  const gameId = 'b06a6b50-5356-4165-a05e-59b3a9873a54';
   const [name, setName] = useState<string>("t");
   const [vote, setVote] = useState<number>(0);
   const [players, setPlayers] = useState<PersonVote[]>([]);
+  const [game, setGame] = useState<Game>();
 
   const firebaseConfig = {
     apiKey: "AIzaSyBqtocdVqufi9w4DVrnV5cNVRcY6wfk_ic",
@@ -35,25 +37,53 @@ function App() {
     evt.preventDefault();
   }
 
+  function initGame() {
+    let game: Game = {
+      gameId: gameId,
+      cardsShowing: false,
+      gameName: "Test Game!",
+      players: new Map<string, PersonVote>(),
+    }
+    firebase.database().ref('game/' + gameId).set(game);
+  }
+
   function addVote(id: number, name: string, vote: number) {
-    firebase.database().ref('test/' + id + '/' + name).set({
+    firebase.database().ref('game/' + gameId + '/players/' + name).set({
       username: name,
       vote: vote,
     });
   }
 
-
+  function toggleCards()
+  {
+    if (game)
+    {
+      firebase.database().ref('game/' + gameId + '/cardsShowing/').set(!game.cardsShowing);
+    }
+  }
 
   useEffect(() => {
-    firebase.database().ref('test/'+id).on('value', (snapshot: firebase.database.DataSnapshot) => {
+    // Future: Landing page does "create game" when you hit a button.
+    initGame(); // TODO remove
+    firebase.database().ref('game/'+gameId).on('value', (snapshot: firebase.database.DataSnapshot) => {
       const snap = snapshot.val();
-      const t: PersonVote[]  = [];
-      Object.entries(snap).forEach(
-        ([key, value]) => t.push(value as PersonVote)
-      );
-      setPlayers(t);
+
+      let game = snap as Game;
+      setGame(game);
+
+      if (game.players)
+      {
+        const votes: PersonVote[]  = [];
+        Object.entries(game.players).forEach(
+          ([key, val]) => {
+            votes.push(val as PersonVote);
+          });
+        setPlayers(votes);
+          
+      }
+      // console.log(game);
     });
-}, []);
+  }, []);
 
 
   return (
@@ -74,14 +104,17 @@ function App() {
       <div>
         DATA HERE
         <table>
-        {players.map((playerVote, index) => (
-          <tr>
-            <td>{playerVote.username}</td>
-            <td>{playerVote.vote.toString()}</td>
-          </tr>
-        ))}
+          <tbody>
+          {players.map((playerVote, index) => (
+            <tr key={playerVote.username}>
+              <td>{playerVote.username}</td>
+              <td>{game?.cardsShowing ? playerVote.vote.toString() : "?"}</td>
+            </tr>
+          ))}
+          </tbody>
         </table>
       </div>
+      <button onClick={toggleCards}>REVEAL</button>
     </div>
   );
 }
