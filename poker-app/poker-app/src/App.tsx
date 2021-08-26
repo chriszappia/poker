@@ -18,16 +18,18 @@ function App() {
 
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/game">
-          <PokerGame />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/game">
+            <PokerGame />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

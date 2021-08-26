@@ -84,7 +84,7 @@ function PokerGame() {
   
   
     return (
-      <div className="App">
+      <>
         <div>
           FORM HERE
           <form onSubmit={handleSubmit}>
@@ -112,7 +112,7 @@ function PokerGame() {
           </table>
         </div>
         <button onClick={toggleCards}>REVEAL</button>
-      </div>
+      </>
     );
   }
 export default PokerGame;
