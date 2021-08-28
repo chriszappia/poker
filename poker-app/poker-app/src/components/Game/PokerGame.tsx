@@ -5,8 +5,12 @@ import { Game, PersonVote } from '../../data';
 
 import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
 
-function PokerGame() {
 
+interface PokerGameProps {
+  gameId: string,
+}
+
+function PokerGame(props: PokerGameProps) {
   
   const id = 1;
   const gameId = 'b06a6b50-5356-4165-a05e-59b3a9873a54';
