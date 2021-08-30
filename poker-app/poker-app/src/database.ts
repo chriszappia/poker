@@ -57,6 +57,5 @@ export function listenForGameEvents(gameId: string, callback: (game: Game) => vo
 
     let game = snap as Game;
     callback(game);
-
   });
 }
