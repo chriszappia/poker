@@ -13,7 +13,6 @@ interface PokerGameProps {
 function PokerGame(props: PokerGameProps) {
   
   const id = 1;
-  const gameId = 'b06a6b50-5356-4165-a05e-59b3a9873a54';
   const [name, setName] = useState<string>("t");
   const [vote, setVote] = useState<number>(0);
   const [players, setPlayers] = useState<PersonVote[]>([]);
@@ -34,14 +33,14 @@ function PokerGame(props: PokerGameProps) {
   }
 
   function addVote(id: number, name: string, vote: number) {
-    addVoteToGame(gameId, name, vote);
+    addVoteToGame(props.gameId, name, vote);
   }
 
   function toggleCards()
   {
     if (game)
     {
-      toggleCardsInGame(gameId, game.cardsShowing);
+      toggleCardsInGame(props.gameId, game.cardsShowing);
     }
   }
 
@@ -52,6 +51,7 @@ function PokerGame(props: PokerGameProps) {
     if (updatedGame.players)
     {
       const votes: PersonVote[]  = [];
+      // TODO cast this so the game object works properly
       Object.entries(updatedGame.players).forEach(
         ([key, val]) => {
           votes.push(val as PersonVote);
@@ -66,8 +66,8 @@ function PokerGame(props: PokerGameProps) {
       // Future: Landing page does "create game" when you hit a button.
       initFirebase();
       initGame(); // TODO remove
-      listenForGameEvents(gameId, gameUpdateHandler);
-    }, []);
+      listenForGameEvents(props.gameId, gameUpdateHandler);
+    }, [props.gameId]);
 
 
   return (
