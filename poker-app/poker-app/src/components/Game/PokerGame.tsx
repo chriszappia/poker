@@ -24,12 +24,8 @@ function PokerGame(props: PokerGameProps) {
     evt.preventDefault();
   }
 
-
   function initFirebase() {
     firebaseInit();
-  }
-
-  function initGame() {
   }
 
   function addVote(id: number, name: string, vote: number) {
@@ -63,9 +59,7 @@ function PokerGame(props: PokerGameProps) {
 
   useEffect(
     () => {
-      // Future: Landing page does "create game" when you hit a button.
       initFirebase();
-      initGame(); // TODO remove
       listenForGameEvents(props.gameId, gameUpdateHandler);
     }, [props.gameId]);
 
