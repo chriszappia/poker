@@ -4,6 +4,7 @@ import "firebase/database";
 import { Game, PersonVote } from '../../data';
 
 import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
+import { PlayerVoteDisplay } from './PlayerVoteDisplay';
 
 
 interface PokerGameProps {
@@ -54,7 +55,6 @@ function PokerGame(props: PokerGameProps) {
         });
       setPlayers(votes);
     }
-    // console.log(game);
   }
 
   useEffect(
@@ -79,19 +79,8 @@ function PokerGame(props: PokerGameProps) {
         </form>
       </div>
   
-      <div>
-        DATA HERE
-        <table>
-          <tbody>
-          {players.map((playerVote, index) => (
-            <tr key={playerVote.username}>
-              <td>{playerVote.username}</td>
-              <td>{game?.cardsShowing ? playerVote.vote.toString() : "?"}</td>
-            </tr>
-          ))}
-          </tbody>
-        </table>
-      </div>
+      <PlayerVoteDisplay playerVotes={players}  cardsShowing={game?.cardsShowing ?? false} />
+
       <button onClick={toggleCards}>REVEAL</button>
     </>
   );
