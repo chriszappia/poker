@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import "firebase/database";
-import { Game, PersonVote } from "./data";
+import { CardType, Game, GameState, PersonVote,  } from "./data";
 import { NIL as NIL_UUID } from 'uuid';
 
 
@@ -30,6 +30,8 @@ export function createNewGame(gameName: string): string
         cardsShowing: false,
         gameName: gameName,
         players: new Map<string, PersonVote>(),
+        cardType: CardType.FIBONACCI_MODIFIED,
+        gameState: GameState.VOTING,
       }
     firebase.database().ref('game/' + gameId).set(game);
     return gameId;
