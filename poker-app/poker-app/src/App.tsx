@@ -10,6 +10,7 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import 'semantic-ui-css/semantic.min.css'
 
 import PokerGame from './components/Game/PokerGame';
 import Home from './components/Home/Home';
