@@ -1,6 +1,6 @@
 export interface PersonVote {
     username: string,
-    vote: number,
+    vote: string,
 }
 
 export interface Game {

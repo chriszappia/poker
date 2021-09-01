@@ -15,7 +15,7 @@ function PokerGame(props: PokerGameProps) {
   
   const id = 1;
   const [name, setName] = useState<string>("t");
-  const [vote, setVote] = useState<number>(0);
+  const [vote, setVote] = useState<string>("0");
   const [players, setPlayers] = useState<PersonVote[]>([]);
   const [game, setGame] = useState<Game>();
 
@@ -29,7 +29,7 @@ function PokerGame(props: PokerGameProps) {
     firebaseInit();
   }
 
-  function addVote(id: number, name: string, vote: number) {
+  function addVote(id: number, name: string, vote: string) {
     addVoteToGame(props.gameId, name, vote);
   }
 
@@ -72,9 +72,9 @@ function PokerGame(props: PokerGameProps) {
           <input type="text"
                   value={name} 
                   onChange={e => setName(e.target.value)}/>
-          <input type="number"
+          <input type="text"
                   value={vote} 
-                  onChange={e => setVote(e.target.valueAsNumber)}/>
+                  onChange={e => setVote(e.target.value)}/>
           <input type="submit" value="Submit" />
         </form>
       </div>
