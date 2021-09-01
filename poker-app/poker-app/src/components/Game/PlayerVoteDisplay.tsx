@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Statistic }  from 'semantic-ui-react';
 import { PersonVote } from '../../data';
 
 
@@ -12,17 +13,10 @@ export function PlayerVoteDisplay(props: PlayerVoteDisplayProps) {
   return (
       <>
         <div>
-        DATA HERE
-        <table>
-            <tbody>
-            {props.playerVotes.map((playerVote, index) => (
-            <tr key={playerVote.username}>
-                <td>{playerVote.username}</td>
-                <td>{props.cardsShowing ? playerVote.vote.toString() : "?"}</td>
-            </tr>
-            ))}
-            </tbody>
-        </table>
+          {props.playerVotes.map((playerVote, index) => (
+            <Statistic value={props.cardsShowing ? playerVote.vote.toString() : "?"}
+                        label={playerVote.username} />
+          ))}
         </div>
     </>
   );
