@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import firebase from "firebase/app";
 import "firebase/database";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   useParams
 } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'

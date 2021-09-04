@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Statistic }  from 'semantic-ui-react';
 import { PersonVote } from '../../data';
 

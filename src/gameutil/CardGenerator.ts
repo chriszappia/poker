@@ -1,4 +1,3 @@
-import { Card } from "semantic-ui-react";
 import { CardType } from "../data";
 
 
