@@ -4,6 +4,7 @@ import { Game, PersonVote } from '../../data';
 
 import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
 import { PlayerVoteDisplay } from './PlayerVoteDisplay';
+import { CardDisplay } from './CardDisplay';
 
 
 interface PokerGameProps {
@@ -57,8 +58,8 @@ function PokerGame(props: PokerGameProps) {
 
   return (
     <>
-      {gameExists ? <GameView votes={players}
-                              game={game!} // If game exists this won't be undefined
+      {gameExists && game ? <GameView votes={players}
+                              game={game}
                               cardFlipHandler={toggleCards} /> 
                   : <GameNotFound />}
     </>
@@ -77,9 +78,9 @@ function GameView(props: GameViewProps) {
   const [name, setName] = useState<string>("Test");
   const [vote, setVote] = useState<string>("0");
 
-  const handleSubmit = (evt:any) => { // TODO fix this
+  function voteHandler(vote: string) {
+    setVote(vote);
     addVote(name, vote);
-    evt.preventDefault();
   }
 
   function addVote(name: string, vote: string) {
@@ -89,21 +90,12 @@ function GameView(props: GameViewProps) {
 
   return (
     <>
-      <div>
-        FORM HERE
-        <form onSubmit={handleSubmit}>
-          <input type="text"
-                  value={name}
-                  onChange={e => setName(e.target.value)}/>
-          <input type="text"
-                  value={vote} 
-                  onChange={e => setVote(e.target.value)}/>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
   
       <PlayerVoteDisplay playerVotes={props.votes}  cardsShowing={props.game.cardsShowing} />
-
+      <span>
+      <CardDisplay cardType={props.game.cardType} 
+                   voteHandler={voteHandler} />
+      </span>
       <button onClick={props.cardFlipHandler}>REVEAL</button>
     </>
   );
