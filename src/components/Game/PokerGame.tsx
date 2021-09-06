@@ -76,10 +76,10 @@ interface GameViewProps {
 function GameView(props: GameViewProps) {
   
   const [name, setName] = useState<string>("Test");
-  const [vote, setVote] = useState<string>("0");
+  // const [vote, setVote] = useState<string>("0");
 
   function voteHandler(vote: string) {
-    setVote(vote);
+    // setVote(vote);
     addVote(name, vote);
   }
 
@@ -93,6 +93,9 @@ function GameView(props: GameViewProps) {
   
       <PlayerVoteDisplay playerVotes={props.votes}  cardsShowing={props.game.cardsShowing} />
       <span>
+      <input type="text"
+                  value={name}
+                  onChange={e => setName(e.target.value)}/>
       <CardDisplay cardType={props.game.cardType} 
                    voteHandler={voteHandler} />
       </span>
