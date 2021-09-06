@@ -52,9 +52,13 @@ export function toggleCardsInGame(gameId: string, cardsShowing: boolean)
 }
 
 
-export function listenForGameEvents(gameId: string, callback: (game: Game) => void)
+export function listenForGameEvents(gameId: string, callback: (game: Game) => void, notFoundCallback: () => void)
 {
   firebase.database().ref('game/' + gameId).on('value', (snapshot: firebase.database.DataSnapshot) => {
+    if (!snapshot.exists()) {
+      notFoundCallback();
+      return;
+    }
     const snap = snapshot.val();
 
     let game = snap as Game;

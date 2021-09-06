@@ -11,25 +11,12 @@ interface PokerGameProps {
 }
 
 function PokerGame(props: PokerGameProps) {
-  
-  const id = 1;
-  const [name, setName] = useState<string>("t");
-  const [vote, setVote] = useState<string>("0");
   const [players, setPlayers] = useState<PersonVote[]>([]);
   const [game, setGame] = useState<Game>();
-
-
-  const handleSubmit = (evt:any) => { // TODO fix this
-    addVote(id, name, vote);
-    evt.preventDefault();
-  }
+  const [gameExists, setGameExists] = useState<Boolean>(false);
 
   function initFirebase() {
     firebaseInit();
-  }
-
-  function addVote(id: number, name: string, vote: string) {
-    addVoteToGame(props.gameId, name, vote);
   }
 
   function toggleCards()
@@ -42,6 +29,7 @@ function PokerGame(props: PokerGameProps) {
 
   function gameUpdateHandler(updatedGame: Game)
   {
+    setGameExists(true);
     setGame(updatedGame);
 
     if (updatedGame.players)
@@ -56,11 +44,47 @@ function PokerGame(props: PokerGameProps) {
     }
   }
 
+  function gameNotFoundHandler() {
+    setGameExists(false);
+  }
+
   useEffect(
     () => {
       initFirebase();
-      listenForGameEvents(props.gameId, gameUpdateHandler);
+      listenForGameEvents(props.gameId, gameUpdateHandler, gameNotFoundHandler);
     }, [props.gameId]);
+
+
+  return (
+    <>
+      {gameExists ? <GameView votes={players}
+                              game={game!} // If game exists this won't be undefined
+                              cardFlipHandler={toggleCards} /> 
+                  : <GameNotFound />}
+    </>
+  );
+}
+
+
+interface GameViewProps {
+  votes: PersonVote[],
+  game: Game,
+  cardFlipHandler: () => void,
+};
+
+function GameView(props: GameViewProps) {
+  
+  const [name, setName] = useState<string>("Test");
+  const [vote, setVote] = useState<string>("0");
+
+  const handleSubmit = (evt:any) => { // TODO fix this
+    addVote(name, vote);
+    evt.preventDefault();
+  }
+
+  function addVote(name: string, vote: string) {
+    addVoteToGame(props.game.gameId, name, vote);
+  }
 
 
   return (
@@ -69,7 +93,7 @@ function PokerGame(props: PokerGameProps) {
         FORM HERE
         <form onSubmit={handleSubmit}>
           <input type="text"
-                  value={name} 
+                  value={name}
                   onChange={e => setName(e.target.value)}/>
           <input type="text"
                   value={vote} 
@@ -78,10 +102,21 @@ function PokerGame(props: PokerGameProps) {
         </form>
       </div>
   
-      <PlayerVoteDisplay playerVotes={players}  cardsShowing={game?.cardsShowing ?? false} />
+      <PlayerVoteDisplay playerVotes={props.votes}  cardsShowing={props.game.cardsShowing} />
 
-      <button onClick={toggleCards}>REVEAL</button>
+      <button onClick={props.cardFlipHandler}>REVEAL</button>
     </>
   );
 }
+
+
+
+function GameNotFound() {
+  return (
+    <>
+      <h1>Game not found</h1>
+    </>
+  );
+}
+
 export default PokerGame;
