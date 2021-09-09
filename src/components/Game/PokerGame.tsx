@@ -5,6 +5,7 @@ import { Game, PersonVote } from '../../data';
 import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
 import { PlayerVoteDisplay } from './PlayerVoteDisplay';
 import { CardDisplay } from './CardDisplay';
+import { useAppSelector } from '../../app/hooks';
 
 
 interface PokerGameProps {
@@ -56,12 +57,15 @@ function PokerGame(props: PokerGameProps) {
     }, [props.gameId]);
 
 
+  const userId = useAppSelector((state) => state.user.userId)
+
   return (
     <>
       {gameExists && game ? <GameView votes={players}
                               game={game}
                               cardFlipHandler={toggleCards} /> 
                   : <GameNotFound />}
+                  <p>{userId}</p>
     </>
   );
 }

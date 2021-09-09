@@ -11,12 +11,15 @@ import 'semantic-ui-css/semantic.min.css'
 
 import PokerGame from './components/Game/PokerGame';
 import Home from './components/Home/Home';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 
 
 function App() {
 
   return (
     <div className="App">
+      <Provider store={store}>
       <Router>
         <Switch>
           <Route path="/game/:id">
@@ -27,6 +30,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </Provider>
     </div> 
   );
 }
