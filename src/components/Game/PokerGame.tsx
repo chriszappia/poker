@@ -89,7 +89,7 @@ function GameView(props: GameViewProps) {
 
   function addVote(name: string, vote: string) {
     addVoteToGame(props.game.gameId, name, vote);
-  }
+  } 
 
 
   return (
