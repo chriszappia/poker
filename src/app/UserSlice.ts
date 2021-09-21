@@ -29,7 +29,8 @@ export const userSlice = createSlice({
   },
 })
 
-export const { setUserId } = userSlice.actions
+export const { setUserId } = userSlice.actions;
+export const { setUserName } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectUserId = (state: RootState) => state.user.userId;

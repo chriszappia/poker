@@ -3,6 +3,8 @@ import "firebase/database";
 import { Game, PersonVote } from '../../data';
 
 import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
+import { Container, Grid } from 'semantic-ui-react'
+
 import { PlayerVoteDisplay } from './PlayerVoteDisplay';
 import { CardDisplay } from './CardDisplay';
 import { useAppSelector } from '../../app/hooks';
@@ -61,11 +63,13 @@ function PokerGame(props: PokerGameProps) {
 
   return (
     <>
+    <Container>
       {gameExists && game ? <GameView votes={players}
                               game={game}
                               cardFlipHandler={toggleCards} /> 
                   : <GameNotFound />}
                   <p>{userId}</p>
+    </Container>
     </>
   );
 }
@@ -94,16 +98,24 @@ function GameView(props: GameViewProps) {
 
   return (
     <>
-  
-      <PlayerVoteDisplay playerVotes={props.votes}  cardsShowing={props.game.cardsShowing} />
-      <span>
+    <div>
+        <Grid divided='vertically'>
+
+        <Grid.Row columns="1">
       <input type="text"
                   value={name}
                   onChange={e => setName(e.target.value)}/>
+        </Grid.Row>
+      <Grid.Row columns="1">
+      <PlayerVoteDisplay playerVotes={props.votes}  cardsShowing={props.game.cardsShowing} />
+      </Grid.Row>
+      <Grid.Row columns="1">
       <CardDisplay cardType={props.game.cardType} 
                    voteHandler={voteHandler} />
-      </span>
       <button onClick={props.cardFlipHandler}>REVEAL</button>
+      </Grid.Row>
+      </Grid>
+      </div>
     </>
   );
 }
