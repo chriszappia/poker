@@ -8,6 +8,8 @@ import { Container, Grid } from 'semantic-ui-react'
 import { PlayerVoteDisplay } from './PlayerVoteDisplay';
 import { CardDisplay } from './CardDisplay';
 import { useAppSelector } from '../../app/hooks';
+import { setUserName } from '../../app/UserSlice';
+import { useDispatch } from 'react-redux';
 
 
 interface PokerGameProps {
@@ -59,14 +61,16 @@ function PokerGame(props: PokerGameProps) {
     }, [props.gameId]);
 
 
-  const userId = useAppSelector((state) => state.user.userId)
+  const userId = useAppSelector((state) => state.user.userId);
+  const userName = useAppSelector((state) => state.user.userName);
 
   return (
     <>
     <Container>
       {gameExists && game ? <GameView votes={players}
                               game={game}
-                              cardFlipHandler={toggleCards} /> 
+                              cardFlipHandler={toggleCards} 
+                              username={userName}/> 
                   : <GameNotFound />}
                   <p>{userId}</p>
     </Container>
@@ -79,11 +83,12 @@ interface GameViewProps {
   votes: PersonVote[],
   game: Game,
   cardFlipHandler: () => void,
+  username: string,
 };
 
 function GameView(props: GameViewProps) {
   
-  const [name, setName] = useState<string>("Test");
+  const [name, setName] = useState<string>(props.username);
   // const [vote, setVote] = useState<string>("0");
 
   function voteHandler(vote: string) {
@@ -95,16 +100,23 @@ function GameView(props: GameViewProps) {
     addVoteToGame(props.game.gameId, name, vote);
   } 
 
+  const dispatch = useDispatch()
+
 
   return (
     <>
     <div>
         <Grid divided='vertically'>
 
-        <Grid.Row columns="1">
+        <Grid.Row columns="3">
+          <Grid.Column />
+          <Grid.Column />
+          <Grid.Column>
       <input type="text"
                   value={name}
-                  onChange={e => setName(e.target.value)}/>
+                  onChange={e => setName(e.target.value)}
+                  onBlur={e => dispatch(setUserName(name))}/>
+          </Grid.Column>
         </Grid.Row>
       <Grid.Row columns="1">
       <PlayerVoteDisplay playerVotes={props.votes}  cardsShowing={props.game.cardsShowing} />
