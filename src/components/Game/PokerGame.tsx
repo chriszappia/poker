@@ -70,7 +70,8 @@ function PokerGame(props: PokerGameProps) {
       {gameExists && game ? <GameView votes={players}
                               game={game}
                               cardFlipHandler={toggleCards} 
-                              username={userName}/> 
+                              username={userName} 
+                              userId={userId} />
                   : <GameNotFound />}
                   <p>{userId}</p>
     </Container>
@@ -84,6 +85,7 @@ interface GameViewProps {
   game: Game,
   cardFlipHandler: () => void,
   username: string,
+  userId: string,
 };
 
 function GameView(props: GameViewProps) {
@@ -97,7 +99,7 @@ function GameView(props: GameViewProps) {
   }
 
   function addVote(name: string, vote: string) {
-    addVoteToGame(props.game.gameId, name, vote);
+    addVoteToGame(props.game.gameId, props.userId, name, vote);
   } 
 
   const dispatch = useDispatch()

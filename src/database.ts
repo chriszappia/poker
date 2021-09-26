@@ -37,10 +37,10 @@ export function createNewGame(gameName: string): string
     return gameId;
 }
 
-export function addVoteToGame(gameId: string, userId: string, vote: string)
+export function addVoteToGame(gameId: string, userId: string, username: string, vote: string)
 {
     firebase.database().ref('game/' + gameId + '/players/' + userId).set({
-        username: userId,
+        username: username,
         vote: vote,
       });
 }
