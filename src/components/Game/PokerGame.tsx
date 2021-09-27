@@ -112,7 +112,9 @@ function GameView(props: GameViewProps) {
 
         <Grid.Row columns="3">
           <Grid.Column />
-          <Grid.Column />
+          <Grid.Column>
+            <h1>{props.game.gameName}</h1>
+          </Grid.Column>
           <Grid.Column>
       <input type="text"
                   value={name}
@@ -133,7 +135,6 @@ function GameView(props: GameViewProps) {
     </>
   );
 }
-
 
 
 function GameNotFound() {
