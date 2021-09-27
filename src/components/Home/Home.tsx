@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
+import { CardType } from '../../data';
 import { createNewGame, firebaseInit } from '../../database';
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
 
     function initGame(): void {
         firebaseInit();
-        const newGameId = createNewGame("Test Name");
+        const newGameId = createNewGame("Test Name", CardType.FIBONACCI_MODIFIED);
       
         history.push("game/"+ newGameId);
     }

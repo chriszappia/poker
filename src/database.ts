@@ -22,7 +22,7 @@ export function firebaseInit()
      }
 }
 
-export function createNewGame(gameName: string): string
+export function createNewGame(gameName: string, cardType: CardType): string
 {
     const gameId: string = NIL_UUID;
     const game: Game = {
@@ -30,7 +30,7 @@ export function createNewGame(gameName: string): string
         cardsShowing: false,
         gameName: gameName,
         players: new Map<string, PersonVote>(),
-        cardType: CardType.FIBONACCI_MODIFIED,
+        cardType: cardType,
         gameState: GameState.VOTING,
       }
     firebase.database().ref('game/' + gameId).set(game);
