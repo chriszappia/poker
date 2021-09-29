@@ -7,7 +7,7 @@ export interface Game {
     gameName: string,
     gameId: string,
     cardsShowing: boolean,
-    players: object,
+    players: Record<string, unknown>,
     cardType: CardType,
     gameState: GameState,
 }

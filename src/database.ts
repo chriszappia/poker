@@ -29,7 +29,7 @@ export function createNewGame(gameName: string, cardType: CardType): string
         gameId: gameId,
         cardsShowing: false,
         gameName: gameName,
-        players: new Map<string, PersonVote>(),
+        players: {},
         cardType: cardType,
         gameState: GameState.VOTING,
       }
