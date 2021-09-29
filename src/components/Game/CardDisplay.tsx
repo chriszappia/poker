@@ -17,7 +17,8 @@ export function CardDisplay(props: CardDisplayProps) {
             <Button content={cardValue.displayValue}
                     onClick={(evt: any) => { 
                         props.voteHandler(cardValue.dbValue);
-                    }} />
+                    }}
+                    key={cardValue.dbValue} />
         ))}
         </>
     );
