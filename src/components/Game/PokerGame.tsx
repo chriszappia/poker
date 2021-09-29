@@ -19,7 +19,7 @@ interface PokerGameProps {
 function PokerGame(props: PokerGameProps) {
   const [players, setPlayers] = useState<PersonVote[]>([]);
   const [game, setGame] = useState<Game>();
-  const [gameExists, setGameExists] = useState<Boolean>(false);
+  const [gameExists, setGameExists] = useState<boolean>(false);
 
   function initFirebase() {
     firebaseInit();
@@ -86,7 +86,7 @@ interface GameViewProps {
   cardFlipHandler: () => void,
   username: string,
   userId: string,
-};
+}
 
 function GameView(props: GameViewProps) {
   

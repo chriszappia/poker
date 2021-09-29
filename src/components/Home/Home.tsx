@@ -6,7 +6,7 @@ import { createNewGame, firebaseInit } from '../../database';
 
 function Home() {
 
-    let history = useHistory();
+    const history = useHistory();
 
     const [gameName, setGameName] = useState<string>("Planning Poker Game");
     const [cardType, setCardType] = useState<CardType>(CardType.FIBONACCI_MODIFIED);

@@ -61,7 +61,7 @@ export function listenForGameEvents(gameId: string, callback: (game: Game) => vo
     }
     const snap = snapshot.val();
 
-    let game = snap as Game;
+    const game = snap as Game;
     callback(game);
   });
 }

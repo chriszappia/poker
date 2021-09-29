@@ -44,7 +44,7 @@ function PokerGameWrapper() {
   interface PokerPathParams {
     id: string,
   }
-  let params = useParams<PokerPathParams>();
+  const params = useParams<PokerPathParams>();
   return (
     <PokerGame gameId={params.id}/>
   )
