@@ -10,12 +10,12 @@ export interface CardDisplayProps {
 }
 
 
-export function CardDisplay(props: CardDisplayProps) {
+export function CardDisplay(props: CardDisplayProps): JSX.Element {
     return (
         <>
         {getCardsForType(props.cardType).map((cardValue) => (
             <Button content={cardValue.displayValue}
-                    onClick={(evt: any) => { 
+                    onClick={(_) => {
                         props.voteHandler(cardValue.dbValue);
                     }}
                     key={cardValue.dbValue} />

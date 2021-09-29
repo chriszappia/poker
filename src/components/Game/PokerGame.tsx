@@ -16,10 +16,10 @@ interface PokerGameProps {
   gameId: string,
 }
 
-function PokerGame(props: PokerGameProps) {
+function PokerGame(props: PokerGameProps): JSX.Element {
   const [players, setPlayers] = useState<PersonVote[]>([]);
   const [game, setGame] = useState<Game>();
-  const [gameExists, setGameExists] = useState<Boolean>(false);
+  const [gameExists, setGameExists] = useState<boolean>(false);
 
   function initFirebase() {
     firebaseInit();
@@ -43,7 +43,7 @@ function PokerGame(props: PokerGameProps) {
       const votes: PersonVote[]  = [];
       // TODO cast this so the game object works properly
       Object.entries(updatedGame.players).forEach(
-        ([key, val]) => {
+        ([_, val]) => {
           votes.push(val as PersonVote);
         });
       setPlayers(votes);
@@ -86,7 +86,7 @@ interface GameViewProps {
   cardFlipHandler: () => void,
   username: string,
   userId: string,
-};
+}
 
 function GameView(props: GameViewProps) {
   
@@ -119,7 +119,7 @@ function GameView(props: GameViewProps) {
       <input type="text"
                   value={name}
                   onChange={e => setName(e.target.value)}
-                  onBlur={e => dispatch(setUserName(name))}/>
+                  onBlur={_ => dispatch(setUserName(name))}/>
           </Grid.Column>
         </Grid.Row>
       <Grid.Row columns="1">
@@ -137,7 +137,7 @@ function GameView(props: GameViewProps) {
 }
 
 
-function GameNotFound() {
+function GameNotFound(): JSX.Element {
   return (
     <>
       <h1>Game not found</h1>

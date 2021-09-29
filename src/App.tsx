@@ -16,7 +16,7 @@ import { persistor, store } from './app/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 
-function App() {
+function App(): JSX.Element {
 
   return (
     <div className="App">
@@ -44,7 +44,7 @@ function PokerGameWrapper() {
   interface PokerPathParams {
     id: string,
   }
-  let params = useParams<PokerPathParams>();
+  const params = useParams<PokerPathParams>();
   return (
     <PokerGame gameId={params.id}/>
   )

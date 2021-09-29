@@ -1,10 +1,10 @@
 import firebase from "firebase";
 import "firebase/database";
-import { CardType, Game, GameState, PersonVote,  } from "./data";
+import { CardType, Game, GameState } from "./data";
 import { NIL as NIL_UUID } from 'uuid';
 
 
-export function firebaseInit()
+export function firebaseInit(): void
 {
     const firebaseConfig = {
         apiKey: "AIzaSyBqtocdVqufi9w4DVrnV5cNVRcY6wfk_ic",
@@ -29,7 +29,7 @@ export function createNewGame(gameName: string, cardType: CardType): string
         gameId: gameId,
         cardsShowing: false,
         gameName: gameName,
-        players: new Map<string, PersonVote>(),
+        players: {},
         cardType: cardType,
         gameState: GameState.VOTING,
       }
@@ -37,7 +37,7 @@ export function createNewGame(gameName: string, cardType: CardType): string
     return gameId;
 }
 
-export function addVoteToGame(gameId: string, userId: string, username: string, vote: string)
+export function addVoteToGame(gameId: string, userId: string, username: string, vote: string): void
 {
     firebase.database().ref('game/' + gameId + '/players/' + userId).set({
         username: username,
@@ -46,13 +46,13 @@ export function addVoteToGame(gameId: string, userId: string, username: string, 
 }
 
 
-export function toggleCardsInGame(gameId: string, cardsShowing: boolean)
+export function toggleCardsInGame(gameId: string, cardsShowing: boolean): void
 {
     firebase.database().ref('game/' + gameId + '/cardsShowing/').set(!cardsShowing);
 }
 
 
-export function listenForGameEvents(gameId: string, callback: (game: Game) => void, notFoundCallback: () => void)
+export function listenForGameEvents(gameId: string, callback: (game: Game) => void, notFoundCallback: () => void): void
 {
   firebase.database().ref('game/' + gameId).on('value', (snapshot: firebase.database.DataSnapshot) => {
     if (!snapshot.exists()) {
@@ -61,7 +61,7 @@ export function listenForGameEvents(gameId: string, callback: (game: Game) => vo
     }
     const snap = snapshot.val();
 
-    let game = snap as Game;
+    const game = snap as Game;
     callback(game);
   });
 }

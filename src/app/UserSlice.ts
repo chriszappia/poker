@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import type { RootState } from './store';
 
 // Define a type for the slice state
 interface UserState {
@@ -33,7 +32,8 @@ export const { setUserId } = userSlice.actions;
 export const { setUserName } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectUserId = (state: RootState) => state.user.userId;
+// TODO do i need this?
+// export const selectUserId = (state: RootState) => state.user.userId;
 
 
 export default userSlice.reducer

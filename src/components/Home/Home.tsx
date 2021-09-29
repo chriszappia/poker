@@ -4,9 +4,9 @@ import { Button, DropdownProps, Form, Select } from 'semantic-ui-react';
 import { CardType } from '../../data';
 import { createNewGame, firebaseInit } from '../../database';
 
-function Home() {
+function Home(): JSX.Element {
 
-    let history = useHistory();
+    const history = useHistory();
 
     const [gameName, setGameName] = useState<string>("Planning Poker Game");
     const [cardType, setCardType] = useState<CardType>(CardType.FIBONACCI_MODIFIED);

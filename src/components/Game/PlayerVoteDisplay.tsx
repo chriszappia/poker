@@ -5,10 +5,10 @@ import { PersonVote } from '../../data';
 
 export interface PlayerVoteDisplayProps {
     playerVotes: PersonVote[],
-    cardsShowing: Boolean,
+    cardsShowing: boolean,
 }
 
-export function PlayerVoteDisplay(props: PlayerVoteDisplayProps) {
+export function PlayerVoteDisplay(props: PlayerVoteDisplayProps): JSX.Element {
 
   return (
       <>
