@@ -43,7 +43,7 @@ function PokerGame(props: PokerGameProps): JSX.Element {
       const votes: PersonVote[]  = [];
       // TODO cast this so the game object works properly
       Object.entries(updatedGame.players).forEach(
-        ([key, val]) => {
+        ([_, val]) => {
           votes.push(val as PersonVote);
         });
       setPlayers(votes);
@@ -119,7 +119,7 @@ function GameView(props: GameViewProps) {
       <input type="text"
                   value={name}
                   onChange={e => setName(e.target.value)}
-                  onBlur={e => dispatch(setUserName(name))}/>
+                  onBlur={_ => dispatch(setUserName(name))}/>
           </Grid.Column>
         </Grid.Row>
       <Grid.Row columns="1">
