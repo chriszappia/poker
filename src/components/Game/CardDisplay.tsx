@@ -10,7 +10,7 @@ export interface CardDisplayProps {
 }
 
 
-export function CardDisplay(props: CardDisplayProps) {
+export function CardDisplay(props: CardDisplayProps): JSX.Element {
     return (
         <>
         {getCardsForType(props.cardType).map((cardValue) => (

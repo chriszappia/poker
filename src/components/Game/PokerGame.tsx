@@ -16,7 +16,7 @@ interface PokerGameProps {
   gameId: string,
 }
 
-function PokerGame(props: PokerGameProps) {
+function PokerGame(props: PokerGameProps): JSX.Element {
   const [players, setPlayers] = useState<PersonVote[]>([]);
   const [game, setGame] = useState<Game>();
   const [gameExists, setGameExists] = useState<boolean>(false);
@@ -137,7 +137,7 @@ function GameView(props: GameViewProps) {
 }
 
 
-function GameNotFound() {
+function GameNotFound(): JSX.Element {
   return (
     <>
       <h1>Game not found</h1>

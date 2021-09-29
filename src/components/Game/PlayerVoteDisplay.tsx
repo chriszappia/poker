@@ -8,7 +8,7 @@ export interface PlayerVoteDisplayProps {
     cardsShowing: boolean,
 }
 
-export function PlayerVoteDisplay(props: PlayerVoteDisplayProps) {
+export function PlayerVoteDisplay(props: PlayerVoteDisplayProps): JSX.Element {
 
   return (
       <>

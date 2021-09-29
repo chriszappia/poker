@@ -4,7 +4,7 @@ import { Button, DropdownProps, Form, Select } from 'semantic-ui-react';
 import { CardType } from '../../data';
 import { createNewGame, firebaseInit } from '../../database';
 
-function Home() {
+function Home(): JSX.Element {
 
     const history = useHistory();
 
