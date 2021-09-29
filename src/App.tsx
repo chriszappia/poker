@@ -16,7 +16,7 @@ import { persistor, store } from './app/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 
-function App() {
+function App(): JSX.Element {
 
   return (
     <div className="App">
