@@ -4,16 +4,23 @@ import { CardType, Game, GameState } from "./data";
 import { NIL as NIL_UUID } from 'uuid';
 
 
+const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
+const FIREBASE_AUTH_DOMAIN = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
+const FIREBASE_DB_URL = process.env.REACT_APP_FIREBASE_DB_URL;
+const FIREBASE_PROJECT_ID = process.env.REACT_APP_FIREBASE_PROJECT_ID;
+const FIREBASE_MESSAGING_SENDER_ID =  process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID;
+const FIREBASE_APP_ID = process.env.REACT_APP_FIREBASE_APP_ID;
+
+
 export function firebaseInit(): void
 {
     const firebaseConfig = {
-        apiKey: "AIzaSyBqtocdVqufi9w4DVrnV5cNVRcY6wfk_ic",
-        authDomain: "preferential-planning-poker.firebaseapp.com",
-        databaseURL: "https://preferential-planning-poker-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "preferential-planning-poker",
-        storageBucket: "preferential-planning-poker.appspot.com",
-        messagingSenderId: "637733111532",
-        appId: "1:637733111532:web:60ffc6730de55e759107c9"
+        apiKey: FIREBASE_API_KEY,
+        authDomain: FIREBASE_AUTH_DOMAIN,
+        databaseURL: FIREBASE_DB_URL,
+        projectId: FIREBASE_PROJECT_ID,
+        messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+        appId: FIREBASE_APP_ID
       };
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
