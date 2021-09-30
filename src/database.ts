@@ -1,5 +1,5 @@
-import firebase from "firebase";
 import "firebase/database";
+import firebase from "firebase/app";
 import { CardType, Game, GameState } from "./data";
 import { NIL as NIL_UUID } from 'uuid';
 
