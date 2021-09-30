@@ -7,7 +7,7 @@ import {
   Route,
   useParams
 } from "react-router-dom";
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 import PokerGame from './components/Game/PokerGame';
 import Home from './components/Home/Home';
@@ -47,7 +47,7 @@ function PokerGameWrapper() {
   const params = useParams<PokerPathParams>();
   return (
     <PokerGame gameId={params.id}/>
-  )
+  );
 }
 
 export default App;

@@ -19,7 +19,7 @@ const T_SHIRT_SIZE_CARDS: DisplayCard[] = [
 export function getCardsForType(cardType: CardType): DisplayCard[] {
     switch(cardType) {
         case(CardType.FIBONACCI): {
-            return FIBONACCI_CARDS
+            return FIBONACCI_CARDS;
         }
         case(CardType.FIBONACCI_MODIFIED): { 
             return MODIFIED_FIBONACCI_CARDS;

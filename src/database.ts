@@ -32,7 +32,7 @@ export function createNewGame(gameName: string, cardType: CardType): string
         players: {},
         cardType: cardType,
         gameState: GameState.VOTING,
-      }
+      };
     firebase.database().ref('game/' + gameId).set(game);
     return gameId;
 }

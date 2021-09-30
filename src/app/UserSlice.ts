@@ -11,7 +11,7 @@ interface UserState {
 const initialState: UserState = {
     userId: uuidv4(),
     userName: "Anonymous",
-}
+};
 
 export const userSlice = createSlice({
   name: 'user',
@@ -26,7 +26,7 @@ export const userSlice = createSlice({
       state.userName = action.payload;
     },
   },
-})
+});
 
 export const { setUserId } = userSlice.actions;
 export const { setUserName } = userSlice.actions;
@@ -36,4 +36,4 @@ export const { setUserName } = userSlice.actions;
 // export const selectUserId = (state: RootState) => state.user.userId;
 
 
-export default userSlice.reducer
+export default userSlice.reducer;

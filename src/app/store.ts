@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { userSlice } from './UserSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import { userSlice } from './UserSlice';
 
 import {
   persistStore,
@@ -10,15 +10,15 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-}
+};
 
 const persistedReducer = persistReducer(persistConfig, userSlice.reducer);
 
@@ -32,7 +32,7 @@ export const store = configureStore({
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-})
+});
 
 export const persistor = persistStore(store);
 

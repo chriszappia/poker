@@ -3,7 +3,7 @@ import "firebase/database";
 import { Game, PersonVote } from '../../data';
 
 import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
-import { Container, Grid } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react';
 
 import { PlayerVoteDisplay } from './PlayerVoteDisplay';
 import { CardDisplay } from './CardDisplay';
@@ -102,7 +102,7 @@ function GameView(props: GameViewProps) {
     addVoteToGame(props.game.gameId, props.userId, name, vote);
   } 
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
 
   return (
