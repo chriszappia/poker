@@ -1,8 +1,9 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { Button, DropdownProps, Form, Select } from 'semantic-ui-react';
+import { Button, Container, DropdownProps, Form, Select } from 'semantic-ui-react';
 import { CardType } from '../../data';
 import { createNewGame, firebaseInit } from '../../database';
+import { FormContainer, GameHeader } from './Style';
 
 function Home(): JSX.Element {
 
@@ -30,18 +31,21 @@ function Home(): JSX.Element {
 
     return (
         <>
-            <h1>Planning Poker App</h1>
-            <Form>
-                <Form.Field>
-                    <label>Game Name</label>
-                    <input defaultValue={gameName} onChange={e => setGameName(e.target.value)} />
-                </Form.Field>
-                <Form.Field>
-                    <label>Card Type</label>
-                    <Select options={cardTypes} defaultValue={cardType} onChange={dropDownHandler} />
-                </Form.Field>
-                <Button onClick={initGame} type='submit'>New Game</Button>
-            </Form>
+            <GameHeader>Planning Poker App</GameHeader>
+            <FormContainer>
+                <label>Get Started!</label>
+                <Form>
+                    <Form.Field>
+                        <label>Game Name</label>
+                        <input defaultValue={gameName} onChange={e => setGameName(e.target.value)} />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Card Type</label>
+                        <Select options={cardTypes} defaultValue={cardType} onChange={dropDownHandler} />
+                    </Form.Field>
+                    <Button onClick={initGame} type='submit'>New Game</Button>
+                </Form>
+            </FormContainer>
         </>
     );
 
