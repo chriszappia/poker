@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "firebase/database";
-import { Game, PersonVote } from '../../data/data';
+import { Game, PersonVote } from '../../data/types';
 
 import { Container, Grid } from 'semantic-ui-react';
 
