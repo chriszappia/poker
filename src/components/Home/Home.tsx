@@ -1,8 +1,8 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Button, Container, DropdownProps, Form, Select } from 'semantic-ui-react';
-import { CardType } from '../../data';
-import { createNewGame, firebaseInit } from '../../database';
+import { CardType } from '../../data/data';
+import { createNewGame, firebaseInit } from '../../data/database';
 import { FormContainer, GameHeader } from './Style';
 
 function Home(): JSX.Element {

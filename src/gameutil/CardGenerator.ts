@@ -1,4 +1,4 @@
-import { CardType } from "../data";
+import { CardType } from "../data/data";
 
 
 export interface DisplayCard {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import { CardType } from '../../data';
+import { CardType } from '../../data/data';
 import { getCardsForType } from '../../gameutil/CardGenerator';
 
 
