@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "firebase/database";
-import { Game, PersonVote } from '../../data';
+import { Game, PersonVote } from '../../data/types';
 
-import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../database';
 import { Container, Grid } from 'semantic-ui-react';
 
 import { PlayerVoteDisplay } from './PlayerVoteDisplay';
@@ -10,6 +9,7 @@ import { CardDisplay } from './CardDisplay';
 import { useAppSelector } from '../../app/hooks';
 import { setUserName } from '../../app/UserSlice';
 import { useDispatch } from 'react-redux';
+import { addVoteToGame, firebaseInit, listenForGameEvents, toggleCardsInGame } from '../../data/database';
 
 
 interface PokerGameProps {
