@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react';
 import { useHistory } from "react-router-dom";
-import { Button, Container, DropdownProps, Form, Select } from 'semantic-ui-react';
+import { Button, DropdownProps, Form, Select } from 'semantic-ui-react';
 import { createNewGame, firebaseInit } from '../../data/database';
 import { CardType } from '../../data/types';
 import { FormContainer, GameHeader } from './Style';
