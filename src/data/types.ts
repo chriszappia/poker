@@ -1,19 +1,19 @@
 export interface PersonVote {
-    username: string,
-    vote: string,
+    username: string;
+    vote: string;
 }
 
 export interface Game {
-    gameName: string,
-    gameId: string,
-    cardsShowing: boolean,
-    players: Record<string, unknown>,
-    cardType: CardType,
-    gameState: GameState,
+    gameName: string;
+    gameId: string;
+    cardsShowing: boolean;
+    players: Record<string, unknown>;
+    cardType: CardType;
+    gameState: GameState;
 }
 
 export enum CardType {
-    FIBONACCI= "FIBONACCI",
+    FIBONACCI = "FIBONACCI",
     FIBONACCI_MODIFIED = "FIBONACCI_MODIFIED",
     T_SHIRT_SIZES = "T_SHIRT_SIZES",
 }
