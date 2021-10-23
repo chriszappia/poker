@@ -15,6 +15,7 @@ import {
     listenForGameEvents,
     toggleCardsInGame,
 } from "../../data/database";
+import { CenteredDiv } from "./Style";
 
 interface PokerGameProps {
     gameId: string;
@@ -43,7 +44,7 @@ function PokerGame(props: PokerGameProps): JSX.Element {
             const votes: PersonVote[] = [];
             // TODO cast this so the game object works properly
             Object.entries(updatedGame.players).forEach(([_, val]) => {
-                votes.push(val as PersonVote);
+                votes.push(val);
             });
             setPlayers(votes);
         }
@@ -127,17 +128,27 @@ function GameView(props: GameViewProps) {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns="1">
-                        <PlayerVoteDisplay
-                            playerVotes={props.votes}
-                            cardsShowing={props.game.cardsShowing}
-                        />
+                        <CenteredDiv>
+                            <PlayerVoteDisplay
+                                playerVotes={props.votes}
+                                cardsShowing={props.game.cardsShowing}
+                            />
+                        </CenteredDiv>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <CenteredDiv>
+                            <button onClick={props.cardFlipHandler}>
+                                REVEAL
+                            </button>
+                        </CenteredDiv>
                     </Grid.Row>
                     <Grid.Row columns="1">
-                        <CardDisplay
-                            cardType={props.game.cardType}
-                            voteHandler={voteHandler}
-                        />
-                        <button onClick={props.cardFlipHandler}>REVEAL</button>
+                        <CenteredDiv>
+                            <CardDisplay
+                                cardType={props.game.cardType}
+                                voteHandler={voteHandler}
+                            />
+                        </CenteredDiv>
                     </Grid.Row>
                 </Grid>
             </div>
