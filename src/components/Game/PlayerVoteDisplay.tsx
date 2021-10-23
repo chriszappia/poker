@@ -12,15 +12,14 @@ export function PlayerVoteDisplay(props: PlayerVoteDisplayProps): JSX.Element {
         <>
             <div>
                 {props.playerVotes.map((playerVote, index) => (
-                    <Statistic
-                        value={
-                            props.cardsShowing
+                    <Statistic key={playerVote.username + index}>
+                        <Statistic.Value>
+                            {props.cardsShowing
                                 ? playerVote.vote.toString()
-                                : "?"
-                        }
-                        label={playerVote.username}
-                        key={playerVote.username + index}
-                    />
+                                : "?"}
+                        </Statistic.Value>
+                        <Statistic.Label>{playerVote.username}</Statistic.Label>
+                    </Statistic>
                 ))}
             </div>
         </>

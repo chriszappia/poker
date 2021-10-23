@@ -7,7 +7,7 @@ export interface Game {
     gameName: string;
     gameId: string;
     cardsShowing: boolean;
-    players: Record<string, unknown>;
+    players: Record<string, PersonVote>;
     cardType: CardType;
     gameState: GameState;
 }
@@ -20,5 +20,5 @@ export enum CardType {
 
 export enum GameState {
     VOTING = "VOTING",
-    SHOWING_CARDS = "CARDS_SHOWING",
+    SHOWING_CARDS = "SHOWING_CARDS",
 }
