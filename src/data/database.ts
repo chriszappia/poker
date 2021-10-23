@@ -28,6 +28,7 @@ export function firebaseInit(): void {
 }
 
 export function createNewGame(gameName: string, cardType: CardType): string {
+    // TODO Make a unique game ID
     const gameId: string = NIL_UUID;
     const game: Game = {
         gameId: gameId,
