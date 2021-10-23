@@ -1,4 +1,3 @@
-
 export interface PersonVote {
     username: string;
     vote: string;
