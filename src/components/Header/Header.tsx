@@ -13,7 +13,7 @@ function Home(): JSX.Element {
                 <Icon name={"pied piper pp"} color={"red"} size={"huge"} />
                 <Header.Content>
                     <Link to={PokerRoute.HOME}>
-                        <GameHeader>Planning Poker App</GameHeader>
+                        <GameHeader>Planning Poker</GameHeader>
                     </Link>
                 </Header.Content>
             </Menu.Item>
