@@ -3,19 +3,20 @@ import React from "react";
 import EnterName from "../EnterName/EnterName";
 import { Link } from "react-router-dom";
 import { PokerRoute } from "../../util/Routes";
-import { Header, Icon, Menu, Popup } from "semantic-ui-react";
+import { Icon, Menu, Popup } from "semantic-ui-react";
+import { Header as SemanticHeader } from "semantic-ui-react";
 import NewGame from "../NewGame/NewGame";
 
-function Home(): JSX.Element {
+function Header(): JSX.Element {
     return (
         <Menu stackable>
             <Menu.Item as={"a"} haeder>
                 <Icon name={"pied piper pp"} color={"red"} size={"huge"} />
-                <Header.Content>
+                <SemanticHeader.Content>
                     <Link to={PokerRoute.HOME}>
                         <GameHeader>Planning Poker</GameHeader>
                     </Link>
-                </Header.Content>
+                </SemanticHeader.Content>
             </Menu.Item>
             <Popup
                 as={Menu.Item}
@@ -49,4 +50,4 @@ function Home(): JSX.Element {
         </Menu>
     );
 }
-export default Home;
+export default Header;
