@@ -1,7 +1,7 @@
 import "firebase/database";
 import firebase from "firebase/app";
 import { CardType, Game, GameState } from "./types";
-import { NIL as NIL_UUID } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 const FIREBASE_API_KEY = process.env.REACT_APP_FIREBASE_API_KEY;
 const FIREBASE_AUTH_DOMAIN = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
@@ -28,8 +28,7 @@ export function firebaseInit(): void {
 }
 
 export function createNewGame(gameName: string, cardType: CardType): string {
-    // TODO Make a unique game ID
-    const gameId: string = NIL_UUID;
+    const gameId: string = uuidv4();
     const game: Game = {
         gameId: gameId,
         cardsShowing: false,
