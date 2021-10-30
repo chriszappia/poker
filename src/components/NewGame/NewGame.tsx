@@ -2,7 +2,7 @@ import { Button, DropdownProps, Form, Select } from "semantic-ui-react";
 import React, { SyntheticEvent, useState } from "react";
 import { CardType } from "../../data/types";
 import { createNewGame, firebaseInit } from "../../data/database";
-import {Redirect, useHistory} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { FormContainer } from "./Style";
 
 const CARD_TYPES = [
@@ -42,7 +42,7 @@ function NewGame(): JSX.Element {
 
     return (
         <>
-        {gameId && <Redirect to={`/game/${gameId}`}/>}
+            {gameId && <Redirect to={`/game/${gameId}`} />}
             <FormContainer>
                 <Form>
                     <Form.Field>
