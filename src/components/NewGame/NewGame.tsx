@@ -2,7 +2,7 @@ import { Button, DropdownProps, Form, Select } from "semantic-ui-react";
 import React, { SyntheticEvent, useState } from "react";
 import { CardType } from "../../data/types";
 import { createNewGame, firebaseInit } from "../../data/database";
-import { useHistory } from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 import { FormContainer } from "./Style";
 
 const CARD_TYPES = [
@@ -24,18 +24,16 @@ const CARD_TYPES = [
 ];
 
 function NewGame(): JSX.Element {
-    const history = useHistory();
-
     const [gameName, setGameName] = useState<string>("Planning Poker Game");
     const [cardType, setCardType] = useState<CardType>(
         CardType.FIBONACCI_MODIFIED
     );
 
+    const [gameId, setGameId] = useState<string>();
+
     function initGame(): void {
         firebaseInit();
-        const newGameId = createNewGame(gameName, cardType);
-
-        history.push("game/" + newGameId);
+        setGameId(createNewGame(gameName, cardType));
     }
 
     function dropDownHandler(event: SyntheticEvent, data: DropdownProps) {
@@ -43,28 +41,31 @@ function NewGame(): JSX.Element {
     }
 
     return (
-        <FormContainer>
-            <Form>
-                <Form.Field>
-                    <label>Game Name</label>
-                    <input
-                        defaultValue={gameName}
-                        onChange={(e) => setGameName(e.target.value)}
-                    />
-                </Form.Field>
-                <Form.Field>
-                    <label>Card Type</label>
-                    <Select
-                        options={CARD_TYPES}
-                        defaultValue={cardType}
-                        onChange={dropDownHandler}
-                    />
-                </Form.Field>
-                <Button onClick={initGame} type="submit">
-                    New Game
-                </Button>
-            </Form>
-        </FormContainer>
+        <>
+        {gameId && <Redirect to={`/game/${gameId}`}/>}
+            <FormContainer>
+                <Form>
+                    <Form.Field>
+                        <label>Game Name</label>
+                        <input
+                            defaultValue={gameName}
+                            onChange={(e) => setGameName(e.target.value)}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Card Type</label>
+                        <Select
+                            options={CARD_TYPES}
+                            defaultValue={cardType}
+                            onChange={dropDownHandler}
+                        />
+                    </Form.Field>
+                    <Button onClick={initGame} type="submit">
+                        New Game
+                    </Button>
+                </Form>
+            </FormContainer>
+        </>
     );
 }
 
