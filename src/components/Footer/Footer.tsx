@@ -37,17 +37,6 @@ function Footer(): JSX.Element {
                     <a href={"https://github.com/chriszappia/poker"}>
                         <Icon name={"github"} color={"grey"} size={"large"} />
                     </a>
-                    <a
-                        href={
-                            "https://github.com/chriszappia/poker/issues/new/choose"
-                        }
-                    >
-                        <Icon
-                            name={"warning circle"}
-                            color={"red"}
-                            size={"large"}
-                        />
-                    </a>
                 </span>
             </FooterContent>
         </FooterWrapper>
