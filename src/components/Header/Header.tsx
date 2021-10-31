@@ -10,14 +10,14 @@ import NewGame from "../NewGame/NewGame";
 function Header(): JSX.Element {
     return (
         <Menu stackable>
-            <Menu.Item as={"a"} haeder>
-                <Icon name={"pied piper pp"} color={"red"} size={"huge"} />
-                <SemanticHeader.Content>
-                    <Link to={PokerRoute.HOME}>
+            <Link to={PokerRoute.HOME}>
+                <Menu.Item as={"a"} haeder>
+                    <Icon name={"pied piper pp"} color={"red"} size={"huge"} />
+                    <SemanticHeader.Content>
                         <GameHeader>Planning Poker</GameHeader>
-                    </Link>
-                </SemanticHeader.Content>
-            </Menu.Item>
+                    </SemanticHeader.Content>
+                </Menu.Item>
+            </Link>
             <Popup
                 as={Menu.Item}
                 trigger={
