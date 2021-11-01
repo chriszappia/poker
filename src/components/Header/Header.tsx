@@ -11,7 +11,7 @@ function Header(): JSX.Element {
     return (
         <Menu stackable>
             <Link to={PokerRoute.HOME}>
-                <Menu.Item as={"a"} haeder>
+                <Menu.Item as={"a"} header>
                     <Icon name={"pied piper pp"} color={"red"} size={"huge"} />
                     <SemanticHeader.Content>
                         <GameHeader>Planning Poker</GameHeader>
