@@ -1,4 +1,4 @@
-import { GameHeader, MenuPopup } from "./Style";
+import { GameH1, MenuPopup, RedIcon } from "./Style";
 import React from "react";
 import EnterName from "../EnterName/EnterName";
 import { Link } from "react-router-dom";
@@ -12,9 +12,9 @@ function Header(): JSX.Element {
         <Menu stackable>
             <Link to={PokerRoute.HOME}>
                 <Menu.Item as={"a"} header>
-                    <Icon name={"pied piper pp"} color={"red"} size={"huge"} />
+                    <RedIcon name={"pied piper pp"} size={"huge"} />
                     <SemanticHeader.Content>
-                        <GameHeader>Planning Poker</GameHeader>
+                        <GameH1>Planning Poker</GameH1>
                     </SemanticHeader.Content>
                 </Menu.Item>
             </Link>

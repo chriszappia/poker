@@ -1,8 +1,14 @@
 import styled from "styled-components";
-import { Popup } from "semantic-ui-react";
+import { Icon, Popup } from "semantic-ui-react";
 
-export const GameHeader = styled.h1`
-    color: red;
+export const headerRed = "#db2828";
+
+export const GameH1 = styled.h1`
+    color: ${headerRed};
+`;
+
+export const RedIcon = styled(Icon)`
+    color: ${headerRed};
 `;
 
 export const MenuPopup = styled(Popup.Content)`
