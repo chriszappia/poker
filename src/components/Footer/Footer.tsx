@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
-import { FooterContent, FooterWrapper } from "./Style";
+import { FooterContentDiv, FooterWrapperDiv } from "./Style";
 
 /**
  * https://codepen.io/NotLogo/pen/WOdEmy
@@ -29,17 +29,17 @@ const SVG_WAVE: JSX.Element = (
  */
 function Footer(): JSX.Element {
     return (
-        <FooterWrapper>
+        <FooterWrapperDiv>
             {SVG_WAVE}
-            <FooterContent>
+            <FooterContentDiv>
                 Copyright (c) 2021 chriszappia/poker
                 <span className={"report-issue"}>
                     <a href={"https://github.com/chriszappia/poker"}>
                         <Icon name={"github"} color={"grey"} size={"large"} />
                     </a>
                 </span>
-            </FooterContent>
-        </FooterWrapper>
+            </FooterContentDiv>
+        </FooterWrapperDiv>
     );
 }
 
