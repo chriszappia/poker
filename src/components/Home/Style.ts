@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-export const GameHeader = styled.h1`
-    color: red;
-`;
-
-export const FormContainer = styled.div`
+export const HomeWrapper = styled.div`
     width: 40%;
-    margin: 0 auto;
-    padding: 5%;
+    margin: auto;
 `;
