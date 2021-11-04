@@ -13,7 +13,7 @@ import {
     listenForGameEvents,
     toggleCardsInGame,
 } from "../../data/database";
-import { CenteredDiv } from "./Style";
+import { CenteredDiv, GameWrapper } from "./Style";
 
 interface PokerGameProps {
     gameId: string;
@@ -66,7 +66,7 @@ function PokerGame(props: PokerGameProps): JSX.Element {
 
     return (
         <>
-            <Container>
+            <GameWrapper>
                 {gameExists && game ? (
                     <GameView
                         votes={players}
@@ -79,7 +79,7 @@ function PokerGame(props: PokerGameProps): JSX.Element {
                     <GameNotFound />
                 )}
                 <p>{userId}</p>
-            </Container>
+            </GameWrapper>
         </>
     );
 }
