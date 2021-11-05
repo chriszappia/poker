@@ -7,8 +7,6 @@ import { Container, Grid } from "semantic-ui-react";
 import { PlayerVoteDisplay } from "./PlayerVoteDisplay";
 import { CardDisplay } from "./CardDisplay";
 import { useAppSelector } from "../../app/hooks";
-import { setUserName } from "../../app/UserSlice";
-import { useDispatch } from "react-redux";
 import {
     addVoteToGame,
     firebaseInit,
@@ -95,19 +93,18 @@ interface GameViewProps {
 }
 
 function GameView(props: GameViewProps) {
-    const [name, setName] = useState<string>(props.username);
+    const userName = useAppSelector((state) => state.user.userName);
+
     // const [vote, setVote] = useState<string>("0");
 
     function voteHandler(vote: string) {
         // setVote(vote);
-        addVote(name, vote);
+        addVote(userName, vote);
     }
 
     function addVote(name: string, vote: string) {
         addVoteToGame(props.game.gameId, props.userId, name, vote);
     }
-
-    const dispatch = useDispatch();
 
     return (
         <>
@@ -117,14 +114,6 @@ function GameView(props: GameViewProps) {
                         <Grid.Column />
                         <Grid.Column>
                             <h1>{props.game.gameName}</h1>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <input
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                onBlur={(_) => dispatch(setUserName(name))}
-                            />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns="1">
