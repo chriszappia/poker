@@ -10,6 +10,7 @@ export interface Game {
     players: Record<string, PersonVote>;
     cardType: CardType;
     gameState: GameState;
+    createdAt: number;
 }
 
 export enum CardType {

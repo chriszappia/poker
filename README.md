@@ -1,6 +1,9 @@
 Planning Poker
 ==============
 
+![Node.js Build](https://github.com/chriszappia/poker/actions/workflows/node.js.yml/badge.svg)
+
+
 Tired of making new planning poker games all the time? Need more than 20 characters in your name? Boy do I have a solution for you!
 
 

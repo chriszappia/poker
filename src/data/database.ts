@@ -29,6 +29,8 @@ export function firebaseInit(): void {
 
 export function createNewGame(gameName: string, cardType: CardType): string {
     const gameId: string = uuidv4();
+    const now: number = new Date().valueOf();
+
     const game: Game = {
         gameId: gameId,
         cardsShowing: false,
@@ -36,6 +38,7 @@ export function createNewGame(gameName: string, cardType: CardType): string {
         players: {},
         cardType: cardType,
         gameState: GameState.VOTING,
+        createdAt: now,
     };
     firebase
         .database()
