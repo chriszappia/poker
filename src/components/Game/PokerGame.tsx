@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "firebase/database";
-import { Game, PersonVote } from "../../data/types";
+import { Game, GameState, PersonVote } from "../../data/types";
 
 import { Container, Grid } from "semantic-ui-react";
 
@@ -106,6 +106,15 @@ function GameView(props: GameViewProps) {
         addVoteToGame(props.game.gameId, props.userId, name, vote);
     }
 
+    function getButtonText(state: GameState): string {
+        switch (state) {
+            case GameState.SHOWING_CARDS:
+                return "HIDE";
+            case GameState.VOTING:
+                return "REVEAL";
+        }
+    }
+
     return (
         <>
             <div>
@@ -127,7 +136,7 @@ function GameView(props: GameViewProps) {
                     <Grid.Row>
                         <CenteredDiv>
                             <button onClick={props.cardFlipHandler}>
-                                REVEAL
+                                {getButtonText(props.game.gameState)}
                             </button>
                         </CenteredDiv>
                     </Grid.Row>
@@ -136,6 +145,7 @@ function GameView(props: GameViewProps) {
                             <CardDisplay
                                 cardType={props.game.cardType}
                                 voteHandler={voteHandler}
+                                disabled={props.game.cardsShowing}
                             />
                         </CenteredDiv>
                     </Grid.Row>

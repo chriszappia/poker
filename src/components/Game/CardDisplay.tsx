@@ -6,6 +6,7 @@ import { getCardsForType } from "../../gameutil/CardGenerator";
 export interface CardDisplayProps {
     cardType: CardType;
     voteHandler: (newVote: string) => void;
+    disabled: boolean;
 }
 
 export function CardDisplay(props: CardDisplayProps): JSX.Element {
@@ -27,6 +28,7 @@ export function CardDisplay(props: CardDisplayProps): JSX.Element {
                         voteHandler(cardValue.dbValue);
                     }}
                     key={cardValue.dbValue}
+                    disabled={props.disabled}
                 />
             ))}
         </>
