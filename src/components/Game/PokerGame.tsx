@@ -106,12 +106,11 @@ function GameView(props: GameViewProps) {
         addVoteToGame(props.game.gameId, props.userId, name, vote);
     }
 
-    function getButtonText(state: GameState): string {
-        switch (state) {
-            case GameState.SHOWING_CARDS:
-                return "HIDE";
-            case GameState.VOTING:
-                return "REVEAL";
+    function getButtonText(cardsShowing: boolean): string {
+        if (cardsShowing) {
+            return "HIDE";
+        } else {
+            return "REVEAL";
         }
     }
 
@@ -136,7 +135,7 @@ function GameView(props: GameViewProps) {
                     <Grid.Row>
                         <CenteredDiv>
                             <button onClick={props.cardFlipHandler}>
-                                {getButtonText(props.game.gameState)}
+                                {getButtonText(props.game.cardsShowing)}
                             </button>
                         </CenteredDiv>
                     </Grid.Row>
